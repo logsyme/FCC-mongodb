@@ -18,19 +18,19 @@ const createAndSavePerson = (done) => {
     name: "Matthew",
     age: 30,
     favoriteFoods: ["pizza", "burgers"]
-  })
+  });
 
   newPerson.save((err, data) => {
-    if (err) return console.error(err)
-    if (data) console.log(data)
+    if (err) return console.error(err);
+    if (data) console.log(data);
     done(null, data);
   })
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
   Person.create(arrayOfPeople, (err, data) => {
-    if (err) return console.error(err)
-    if (data) console.log(data)
+    if (err) return console.error(err);
+    if (data) console.log(data);
     done(null, data);
   })
 };
@@ -45,39 +45,39 @@ const findPeopleByName = (personName, done) => {
 
 const findOneByFood = (food, done) => {
   Person.findOne({favoriteFoods: food}, (err, data) => {
-    if (err) return console.error(err)
-    if (data) console.log(data)
-    done(null, data)
+    if (err) return console.error(err);
+    if (data) console.log(data);
+    done(null, data);
   })
 };
 
 const findPersonById = (personId, done) => {
   Person.findById({_id: personId}, (err, data) =>{
-    if (err) return console.error(err)
-    if (data) console.log(data)
-    done(null, data)
+    if (err) return console.error(err);
+    if (data) console.log(data);
+    done(null, data);
   })
 };
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
   Person.findById({_id: personId}, (err, data) => {
-    if (err) return console.error(err)
-    data.favoriteFoods.push(foodToAdd)
+    if (err) return console.error(err);
+    data.favoriteFoods.push(foodToAdd);
     data.save((err, data) => {
-      if (err) return console.error(err)
-      console.log(data)
-      //done(null, data)
+      if (err) return console.error(err);
+      console.log(data);
+      done(null, data);
     })
-    //done(null, data)
   })
-  done(null /*, data*/);
 };
 
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
-
-  done(null /*, data*/);
+  Person.findOneAndUpdate({name: personName}, {age: ageToSet}, {new: true}, (err, data) => {
+    if (err) return console.error(err);
+    done(null, data);
+  })
 };
 
 const removeById = (personId, done) => {
