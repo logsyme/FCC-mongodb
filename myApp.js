@@ -42,7 +42,7 @@ let arrayOfPeople = [{
 }]
 
 const createManyPeople = (arrayOfPeople, done) => {
-  Person.create(arrayOfPeople, function(err, data){
+  Person.create(arrayOfPeople, (err, data) => {
     if (err) return console.error(err)
     if (data) console.log(data)
     done(null, data);
@@ -50,7 +50,7 @@ const createManyPeople = (arrayOfPeople, done) => {
 };
 
 const findPeopleByName = (personName, done) => {
-  Person.find({name: personName}, function(err, data){
+  Person.find({name: personName}, (err, data) => {
     if (err) return console.error(err);
     if (data) console.log(data);
     done(null, data);
@@ -58,7 +58,7 @@ const findPeopleByName = (personName, done) => {
 };
 
 const findOneByFood = (food, done) => {
-  Person.findOne({favoriteFoods: food}, function(err, data){
+  Person.findOne({favoriteFoods: food}, (err, data) => {
     if (err) return console.error(err)
     if (data) console.log(data)
     done(null, data)
